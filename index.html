@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>To-do list</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>To-Do List</title>
 </head>
-<body>
-    
 
+<body class="main">
+    <header class="header"> </header>
+    <form>
+        <input type=text placeholder="Add To Do Card">
+        <button type="submit">+</button>
+    </form>
+
+    <section class="card-container">
+        <article class="card">
+            <h3 class="card__title"> Shopping List </h3>
+            <p class="card__description"> Any info the user wants to add</p>
+            <ul class="card__list">
+                <li class="card__list-item">
+                    <!-- NEED A FORM else the input tags will not work...also need label tags-->
+                    <form>
+                      <label for="checkbox">
+                      <input class="card__checkbox" type="checkbox" id="checkbox"></input>
+                      <input class="card__user-input" type="text" placeholder="Enter your list item"></input>
+                    </label>
+                    </form>
+                </li>
+            </ul>
+        </article>
+    </section>
     <script src="script.js"></script>
 </body>
+
 </html>
