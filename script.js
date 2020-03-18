@@ -19,14 +19,24 @@
 
 
 function addListItem(){
-    const userInput = document.querySelector(".card__user-input");
-    const addButton = document.querySelector(".card__add-li-button");
-    const listTemplate = document.querySelector("#cardListItem")
+    const addListItemButton = document.querySelector(".card__add-li-button");
+    const listTemplate = document.querySelector("#cardListItemTemplate");
+    const listInput = document.querySelector(".card__user-input");
+    const cardList = document.querySelector(".card__list")
     //let cardList = document.querySelector(".card__list");
     //Need to check if these are live or static nodes
     //console.log(addButton);
-    addButton.addEventListener("click", () => {
-        
+    addListItemButton.addEventListener("click", () => {
+        const listFragment = listTemplate.content.cloneNode(true); 
+        listFragment.querySelector(".card__list-item").textContent = listInput.value;
+        cardList.appendChild(listFragment);
+        console.log(listFragment);
     });
 }
 addListItem(); //to test 
+
+function removeListItem(){
+    const removeListItemButton = document.querySelector(".card__list-remove-button")
+    console.log(removeListItemButton);
+    //write a function which removes a list item when a button is clicked.
+}
