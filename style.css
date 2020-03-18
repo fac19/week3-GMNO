@@ -1,3 +1,12 @@
-body {
-    background: white;
+
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-gap: 1.5rem;
+}
+
+.card {
+    
+    background-color: aquamarine;
+
 }

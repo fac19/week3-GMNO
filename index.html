@@ -11,14 +11,17 @@
 
 <body class="main">
     <header class="header"> </header>
-    <form>
-        <input type=text placeholder="Add To Do Card">
-        <button type="submit">+</button>
+    <form class="add-card">
+      <input class="add-card__text"type=text placeholder="Add To Do Card">
+      <button class="add-card__button" type="button" >+</button>
     </form>
 
-    <section class="card-container">
+    <section class="card-container"></section>
+
+    <template id ="todo-card">
         <article class="card">
             <h3 class="card__title"> Shopping List </h3>
+            <button class="card_remove-button" type="button" >-</button>
             <p class="card__description"> Any info the user wants to add</p>
             <ul class="card__list">
                 <li class="card__list-item">
@@ -32,8 +35,8 @@
                 </li>
             </ul>
         </article>
-    </section>
-    <script src="script.js"></script>
+      </template>
 </body>
 
+<script src="script.js"></script>
 </html>
