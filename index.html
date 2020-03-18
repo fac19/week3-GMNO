@@ -13,31 +13,26 @@
   <header class="header"> 
   </header>
   <section class="add-card">
-    <p>
-      <button class="add-card__button" type="button">+</button>
-      Create a new To-Do List
-    </p>
-    <input class="add-card__title" id="addCardTitle" type=text placeholder="Enter List Title">
+    <h2> Create your new To-Do List </h2>
+    <input class="add-card__title" type=text placeholder="Enter a Title for your List">
+    <button class="add-card__button" type="button">+</button>
   </section>
 
   <section class="card-container">
-    <template id="toDoCard">
+   <!-- <template id="toDoCard">-->
       <article class="card">
         <h3 class="card__title"> Shopping List </h3>
         <button class="card__remove-button" type="button">-</button>
         <p class="card__description"> Any info the user wants to add </p>
         <ul class="card__list" id="cardList">
-          <li class="card__list-item"><input type="checkbox"> Placeholder Text </li>
+          <template id="cardListItem">
+            <li class="card__list-item"><input type="checkbox"> Start your list </li>
+          </template>
         </ul>
-        <p>
-          <form class="card__list-form">
-            <label for="userToDo"></label>
-            <input class="card__user-input" type="text" placeholder="Enter your list item" id="userToDo"></input>
-            <button class="card__add-li-button" type="submit" id="addListBtn">+</button>
-          </form>
-        </p>
+        <input class="card__user-input" type="text" placeholder="Enter your list item">
+        <button class="card__add-li-button" type="button">+</button>
       </article>
-    </template>
+    <!--</template>-->
   </section>
 </body>
 <script src="script.js"></script>

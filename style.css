@@ -7,3 +7,7 @@
 .card {
     background-color: aquamarine;
 }
+
+.add-card{
+    border: 1px solid black; 
+}
