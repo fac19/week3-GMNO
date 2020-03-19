@@ -1,54 +1,107 @@
-// const addCardButton = document.querySelector(".add-card__button");
-// const cardTitle = document.querySelector(".add-card__title");
-// const cardContainer = document.querySelector(".card-container");
-// const cardForm = document.querySelector(".add-card");
-// const cardTemplate = document.querySelector("#toDoCard");
+const addCardButton = document.querySelector(".add-card__button");
+const cardTitle = document.querySelector(".add-card__text");
+const cardContainer = document.querySelector(".card-container");
+const cardForm = document.querySelector(".add-card");
+const cardTemplate = document.querySelector("#todo-card");
 
-// function createCard() {
-//     const cardFragment = cardTemplate.content.cloneNode(true);
-//     cardFragment.querySelector(".card__title").textContent = cardTitle.value;
-//     cardFragment.querySelector(".card__remove-button").addEventListener('click', function () {
-//         this.parentNode.remove();
-//     }); //why can't this be defined as an inline function?--not working as inline
-//     cardContainer.appendChild(cardFragment);
-//     addListItem();
-// }
-// addCardButton.addEventListener('click', createCard);
+// const taskInput = domFragment.querySelector(".card__user-input");
+const listForm = document.querySelector(".card__list-form");
+const listItem = document.querySelector(".card__list-item");
+const cardList = document.querySelector(".card__list");
+let index = 1;
 
 
 
+function createCard() {
+    // I tried including 'required' inside html input tag, but it doesn't seem to work, hence the if statement. 
+    if (cardTitle.value == '') {
+        alert('Please add a title for your task list and enter.');
+    } else {
 
-const listInput = document.querySelector(".card__user-input");
+        const domFragment = cardTemplate.content.cloneNode(true);
+        domFragment.querySelector(".card__title").textContent = cardTitle.value;
 
+        domFragment.querySelector(".card").className = `card-${index}`;
 
-function addListItem() {
-    //need to make this relevant to the particular dom fragment
-    //i.e. getting bug when multiple cards (several inputs (multiple of number of cards) appear)
+        domFragment.querySelector(".card__add-list-item-button").className = `card__add-list-item-button${index}`;
 
-    const addListItemButton = document.querySelector(".card__list-add-button");
-    const listTemplate = document.querySelector("#cardListItemTemplate");
-    const cardList = document.querySelector(".card__list");
-
-    addListItemButton.addEventListener("click", () => {
-        const listFragment = listTemplate.content.cloneNode(true);
-        listFragment.querySelector(".card__list-item").textContent = listInput.value;
-        cardList.appendChild(listFragment);
-        //console.log(listFragment);
-
-        removeListItem();
+        domFragment.querySelector(".card_remove-button").addEventListener('click', function () {
+            this.parentNode.remove();
+            // index--  
+        });
 
 
-        function removeListItem() {
-            const removeListItemButton = document.querySelector(".card__list-remove-button");
-            console.log(removeListItemButton);
-            //write a function which removes a list item when a button is clicked.
-            removeListItemButton.addEventListener("click", () => {
-                console.log(this);
-                //this.nextSibling.remove();
-            });
-        }
+        domFragment.querySelector(`.card__add-list-item-button${index}`).addEventListener('click', addTask);
 
-    });
+
+        cardContainer.appendChild(domFragment);
+
+    }
+    // Once user press the 'add' button, the box should be empty, ready for next input. 
+    cardTitle.value = '';
+}
+
+
+
+
+addCardButton.addEventListener('click', () => {
+    createCard();
+    index++;
+});
+
+
+function addTask(e) {
+
+    if (this.previousElementSibling.value == '') {
+        alert('Please add a task and press the button.');
+    } else {
+
+        // add a list item
+        const newListItem = document.createElement('li');
+        newListItem.className = 'each-task';
+
+        // also add a checkbox.
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.setAttribute('name', 'contents');
+
+        // add label for checkbox.
+        const labelForCheckbox = document.createElement('label');
+        labelForCheckbox.className = 'collection-item';
+        labelForCheckbox.setAttribute('for', 'connect' + index);
+
+        // Append checkbox to label
+        labelForCheckbox.appendChild(checkbox);
+        // Create the text node and append to it
+        labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
+
+        newListItem.appendChild(labelForCheckbox);
+
+        //add event listener so that when the 
+
+        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem)
+
+    }
+
+    // Once user press the 'add' button, task input box should be empty for next task. 
+    this.previousElementSibling.value = '';
+
+    e.preventDefault();
 
 }
-addListItem(); //to test 
+
+// TO EDIT 
+function removeListItem() {
+    const removeListItemButton = document.querySelector(".card__list-remove-button");
+    console.log(removeListItemButton);
+    //write a function which removes a list item when a button is clicked.
+    removeListItemButton.addEventListener("click", () => {
+        console.log(this);
+        //this.nextSibling.remove();
+    });
+}
+
+/*            // if(document.querySelector(".card__user-input").value == '') {
+//     alert('Please add a task and press the button.');
+// } else {
+// console.log(`hey this is button${index}`); */
