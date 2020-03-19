@@ -16,12 +16,17 @@
 // addCardButton.addEventListener('click', createCard);
 
 
+
+
+const listInput = document.querySelector(".card__user-input");
+
+
 function addListItem() {
     //need to make this relevant to the particular dom fragment
     //i.e. getting bug when multiple cards (several inputs (multiple of number of cards) appear)
+
     const addListItemButton = document.querySelector(".card__list-add-button");
     const listTemplate = document.querySelector("#cardListItemTemplate");
-    const listInput = document.querySelector(".card__user-input");
     const cardList = document.querySelector(".card__list");
 
     addListItemButton.addEventListener("click", () => {
@@ -29,13 +34,21 @@ function addListItem() {
         listFragment.querySelector(".card__list-item").textContent = listInput.value;
         cardList.appendChild(listFragment);
         //console.log(listFragment);
+
+        removeListItem();
+
+
+        function removeListItem() {
+            const removeListItemButton = document.querySelector(".card__list-remove-button");
+            console.log(removeListItemButton);
+            //write a function which removes a list item when a button is clicked.
+            removeListItemButton.addEventListener("click", () => {
+                console.log(this);
+                //this.nextSibling.remove();
+            });
+        }
+
     });
+
 }
 addListItem(); //to test 
-
-function removeListItem() {
-    const removeListItemButton = document.querySelector(".card__list-remove-button")
-    console.log(removeListItemButton);
-    //write a function which removes a list item when a button is clicked.
-
-}
