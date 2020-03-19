@@ -58,7 +58,7 @@ function addTask(e) {
         // add a list item
         const newListItem = document.createElement('li');
         newListItem.className = 'each-task';
-        git 
+       
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
