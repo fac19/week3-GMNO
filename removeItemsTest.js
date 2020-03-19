@@ -18,9 +18,9 @@ function test(nameOfTest, testFunction) {
 }
 
 // Testing to the test
-test("testing", t => {
-    t.equal(2, 3);
-})
+// test("testing", t => {
+//     t.equal(2, 3);
+// })
 
 
 
