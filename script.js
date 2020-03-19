@@ -6,12 +6,12 @@ const cardTemplate = document.querySelector("#toDoCard");
 
 
 function createCard() {
-    const domFragment = cardTemplate.content.cloneNode(true);
-    domFragment.querySelector(".card__title").textContent = cardTitle.value;
-    domFragment.querySelector(".card__remove-button").addEventListener('click', function() {
+    const cardFragment = cardTemplate.content.cloneNode(true);
+    cardFragment.querySelector(".card__title").textContent = cardTitle.value;
+    cardFragment.querySelector(".card__remove-button").addEventListener('click', function() {
         this.parentNode.remove();
     }); //why can't this be defined as an inline function?--not working as inline
-    cardContainer.appendChild(domFragment);
+    cardContainer.appendChild(cardFragment);
     addListItem();
 }
 addCardButton.addEventListener('click', createCard);
@@ -20,7 +20,7 @@ addCardButton.addEventListener('click', createCard);
 function addListItem(){  
     //need to make this relevant to the particular dom fragment
     //i.e. getting bug when multiple cards (several inputs (multiple of number of cards) appear)
-    const addListItemButton = document.querySelector(".card__add-li-button");
+    const addListItemButton = document.querySelector(".card__list-add-button");
     const listTemplate = document.querySelector("#cardListItemTemplate");
     const listInput = document.querySelector(".card__user-input");
     const cardList = document.querySelector(".card__list")
@@ -29,7 +29,7 @@ function addListItem(){
         const listFragment = listTemplate.content.cloneNode(true); 
         listFragment.querySelector(".card__list-item").textContent = listInput.value;
         cardList.appendChild(listFragment);
-        console.log(listFragment);
+        //console.log(listFragment);
     });
 }
 //addListItem(); //to test 
