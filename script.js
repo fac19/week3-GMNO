@@ -75,11 +75,25 @@ function addTask(e) {
         // Create the text node and append to it
         labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
 
+        // Create remove list button with a class button
+        const removeListItemButton = document.createElement("button");
+        removeListItemButton.className = `button-${index}`;
+        removeListItemButton.textContent = "x";
+        labelForCheckbox.appendChild(removeListItemButton);
+        removeListItemButton.addEventListener("click", () => {
+
+            console.log(this.parentNode.previousElementSibling.childNodes[1].childNodes[2]);
+            this.parentNode.previousElementSibling.childNodes[1].childNodes[2].remove();
+
+        })
+        
+
+        
         newListItem.appendChild(labelForCheckbox);
 
         //add event listener so that when the 
 
-        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem)
+        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
 
     }
 
@@ -90,16 +104,18 @@ function addTask(e) {
 
 }
 
+
+
 // TO EDIT 
-function removeListItem() {
-    const removeListItemButton = document.querySelector(".card__list-remove-button");
-    console.log(removeListItemButton);
-    //write a function which removes a list item when a button is clicked.
-    removeListItemButton.addEventListener("click", () => {
-        console.log(this);
-        //this.nextSibling.remove();
-    });
-}
+// function removeListItem() {
+//     const removeListItemButton = document.querySelector(".card__list-remove-button");
+//     console.log(removeListItemButton);
+//     //write a function which removes a list item when a button is clicked.
+//     removeListItemButton.addEventListener("click", () => {
+//         console.log(this);
+//         //this.nextSibling.remove();
+//     });
+// }
 
 /*            // if(document.querySelector(".card__user-input").value == '') {
 //     alert('Please add a task and press the button.');
