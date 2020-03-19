@@ -88,7 +88,18 @@ function addTask(e) {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.className = "checkbox";
+
         checkbox.setAttribute('name', 'contents');
+
+        //if the check box is selected add the checked class and move it to the bottom of the list
+        checkbox.addEventListener('change', function() {
+            if(this.checked) {
+                checkbox.parentNode.classList.add("checkbox-checked");
+                newListItem.parentNode.appendChild(newListItem);
+            } else {
+                checkbox.parentNode.classList.remove("checkbox-checked");
+            }
+        });
         
         checkbox.addEventListener("keypress", function(e){
             if(e.which === 13){
@@ -120,13 +131,10 @@ function addTask(e) {
         
         
         newListItem.appendChild(labelForCheckbox);
-        
-        //add event listener so that when the 
-        
+                
         this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
     }
     
-    // Once user press the 'add' button, task input box should be empty for next task. 
     this.previousElementSibling.value = '';
     
     e.preventDefault();
