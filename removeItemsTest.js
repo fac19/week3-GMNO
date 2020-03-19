@@ -17,7 +17,7 @@ function test(nameOfTest, testFunction) {
     console.groupEnd(nameOfTest);
 }
 
-// Testing to the test
+// // Testing to the test
 // test("testing", t => {
 //     t.equal(2, 3);
 // })
