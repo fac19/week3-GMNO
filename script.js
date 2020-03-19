@@ -58,7 +58,7 @@ function addTask(e) {
         // add a list item
         const newListItem = document.createElement('li');
         newListItem.className = 'each-task';
-        
+        git 
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
@@ -84,6 +84,9 @@ function addTask(e) {
     
     // Once user press the 'add' button, task input box should be empty for next task. 
     this.previousElementSibling.value = '';
+
+    e.preventDefault();
+
 }
 
 /*            // if(document.querySelector(".card__user-input").value == '') {
