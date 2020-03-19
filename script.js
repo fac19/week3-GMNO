@@ -41,13 +41,11 @@ function createCard() {
     cardTitle.value = '';
 }
 
-
-
-
 addCardButton.addEventListener('click', () => {
     createCard();
     index++;
 });
+
 
 
 function addTask(e) {
