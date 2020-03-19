@@ -7,3 +7,16 @@
 .card {
     background-color: aquamarine;
 }
+
+.add-card{
+    border: 1px solid black; 
+}
+
+.card__list-remove-button {
+    border-radius: 50%;
+    background-color: red;
+}
+.card__list-add-button {
+    border-radius: 50%;
+    background-color: green;
+}

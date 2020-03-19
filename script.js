@@ -14,27 +14,28 @@ let index = 1;
 
 function createCard() {
     // I tried including 'required' inside html input tag, but it doesn't seem to work, hence the if statement. 
-    if(cardTitle.value == '') {
+    if (cardTitle.value == '') {
         alert('Please add a title for your task list and enter.');
     } else {
-        
+
         const domFragment = cardTemplate.content.cloneNode(true);
-        domFragment.querySelector(".card__title").innerHTML = cardTitle.value;
-        
-        domFragment.querySelector(".card").className = `card-${index}`; 
-        
+        domFragment.querySelector(".card__title").textContent = cardTitle.value;
+
+        domFragment.querySelector(".card").className = `card-${index}`;
+
         domFragment.querySelector(".card__add-list-item-button").className = `card__add-list-item-button${index}`;
-        
-        domFragment.querySelector(".card_remove-button").addEventListener('click', function (e) {
+
+        domFragment.querySelector(".card_remove-button").addEventListener('click', function () {
             this.parentNode.remove();
+            // index--  
         });
-        
-        
+
+
         domFragment.querySelector(`.card__add-list-item-button${index}`).addEventListener('click', addTask);
 
-        
+
         cardContainer.appendChild(domFragment);
-        
+
     }
     // Once user press the 'add' button, the box should be empty, ready for next input. 
     cardTitle.value = '';
@@ -42,51 +43,62 @@ function createCard() {
 
 
 
+
 addCardButton.addEventListener('click', () => {
     createCard();
-    index ++;
+    index++;
 });
 
-//
 
 function addTask(e) {
-    
-    if(this.previousElementSibling.value == '') {
+
+    if (this.previousElementSibling.value == '') {
         alert('Please add a task and press the button.');
     } else {
-        
+
         // add a list item
         const newListItem = document.createElement('li');
         newListItem.className = 'each-task';
-       
+
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.setAttribute('name', 'contents');
-        
+
         // add label for checkbox.
         const labelForCheckbox = document.createElement('label');
         labelForCheckbox.className = 'collection-item';
-        labelForCheckbox.setAttribute('for', 'connect'+index);
-        
+        labelForCheckbox.setAttribute('for', 'connect' + index);
+
         // Append checkbox to label
         labelForCheckbox.appendChild(checkbox);
         // Create the text node and append to it
         labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
-        
+
         newListItem.appendChild(labelForCheckbox);
-        
+
         //add event listener so that when the 
-        
+
         this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem)
-        
+
     }
-    
+
     // Once user press the 'add' button, task input box should be empty for next task. 
     this.previousElementSibling.value = '';
 
     e.preventDefault();
 
+}
+
+// TO EDIT 
+function removeListItem() {
+    const removeListItemButton = document.querySelector(".card__list-remove-button");
+    console.log(removeListItemButton);
+    //write a function which removes a list item when a button is clicked.
+    removeListItemButton.addEventListener("click", () => {
+        console.log(this);
+        //this.nextSibling.remove();
+    });
 }
 
 /*            // if(document.querySelector(".card__user-input").value == '') {
