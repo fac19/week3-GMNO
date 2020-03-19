@@ -10,6 +10,8 @@ const listItem = document.querySelector(".card__list-item");
 const cardList = document.querySelector(".card__list");
 let index = 0;
 
+let listIndex = 0;
+
 
 
 function createCard() {
@@ -77,7 +79,7 @@ function addTask(e) {
         alert('Please add a task and press the button.');
         
     } else {
-        
+        listIndex ++;
         // add a list item
         const newListItem = document.createElement('li');
         newListItem.className = 'each-task';
@@ -110,9 +112,10 @@ function addTask(e) {
         removeListItemButton.textContent = "x";
         labelForCheckbox.appendChild(removeListItemButton);
         removeListItemButton.addEventListener("click", () => {
-            
-            this.parentNode.previousElementSibling.childNodes[1].childNodes[2].remove();
-            //amount of list items + 2
+
+            newListItem.parentNode.removeChild(newListItem);
+            listIndex --;
+
         })
         
         
@@ -120,8 +123,7 @@ function addTask(e) {
         
         //add event listener so that when the 
         
-        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem)
-        
+        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
     }
     
     // Once user press the 'add' button, task input box should be empty for next task. 
