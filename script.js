@@ -33,7 +33,6 @@ function createCard() {
         domFragment.querySelector(`.card__add-list-item-button${index}`).addEventListener('click', addTask);
 
         
-        
         cardContainer.appendChild(domFragment);
         
     }
