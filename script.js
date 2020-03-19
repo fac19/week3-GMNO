@@ -30,7 +30,6 @@ function createCard() {
             // index--  
         });
 
-
         domFragment.querySelector(`.card__add-list-item-button${index}`).addEventListener('click', addTask);
 
 
@@ -41,6 +40,13 @@ function createCard() {
     cardTitle.value = '';
 }
 
+// $(document).ready(function() {
+//     domFragment.querySelectorAll(".").on('keypress', function(event) {
+//       if (event.which === 13) {
+//         this.checked = !this.checked;
+//       }
+//     });
+//   });
 
 
 
@@ -63,7 +69,13 @@ function addTask(e) {
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+        checkbox.className = "checkbox"
         checkbox.setAttribute('name', 'contents');
+        checkbox.addEventListener("keypress", function(e){
+            if(e.which === 13){
+                this.checked = !this.checked;
+            }
+        });
 
         // add label for checkbox.
         const labelForCheckbox = document.createElement('label');
