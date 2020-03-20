@@ -22,5 +22,6 @@
 }
 
 .checkbox-checked{
-    background-color: blue;
+    background-color: red;
+    text-decoration: line-through;
 }

@@ -1,5 +1,5 @@
 const addCardButton = document.querySelector(".add-card__button");
-const cardTitle = document.querySelector(".add-card__text");
+const cardTitle = document.querySelector(".add-card__text"); 
 const cardContainer = document.querySelector(".card-container");
 const cardForm = document.querySelector(".add-card");
 const cardTemplate = document.querySelector("#todo-card");
@@ -12,18 +12,17 @@ let index = 0;
 
 let listIndex = 0;
 
-
-
 function createCard() {
-    
-    if (cardTitle.value == '') {
-        alert('Please add a title for your task list and enter.'); //CAN THIS BE REMOVED (feel like title should be optional)
-    } else {
+    // if (cardTitle.value == '') {
+    //     alert('Please add a title for your task list and enter.'); //CAN THIS BE REMOVED (feel like title should be optional)
+    // } else {
         
         index++;
         
         const domFragment = cardTemplate.content.cloneNode(true);
-        domFragment.querySelector(".card__title").textContent = cardTitle.value;
+
+        const fragCardTitle = domFragment.querySelector(".card__title"); 
+        fragCardTitle.textContent = cardTitle.value;
         
         // //Test #1
         // test("Does the card title equal the user input text?", t => {
@@ -52,16 +51,24 @@ function createCard() {
         
         domFragment.querySelector(`.card__add-list-item-button${index}`).addEventListener('click', addTask);
         
-        
         cardContainer.appendChild(domFragment);
         
-    }
-    cardTitle.value = '';
+    // }
+    
     // //Test 4
     // test("This should be empty ready for the new user input", t => {
     //     t.equal(cardTitle.value , "");   
     // });
+    
+    // addCardButton.addEventListener('click', () => {
+    //     storeCard(fragCardTitle.value);
+    // });
+    // cardTitle.value = '';
 }
+addCardButton.addEventListener('click', () => {
+    storeCard("hi");
+});
+
 
 addCardButton.addEventListener('click', () => {
     createCard();
@@ -70,14 +77,9 @@ addCardButton.addEventListener('click', () => {
     // console.log(index);
 });
 
-
-
 function addTask(e) {
-    
     if (this.previousElementSibling.value == '') {
-        
         alert('Please add a task and press the button.');
-        
     } else {
         listIndex ++;
         // add a list item
