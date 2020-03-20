@@ -14,9 +14,9 @@ let old;
 
 
 function createCard() {
-    // if (cardTitle.value == '') {
-    //     alert('Please add a title for your task list and enter.'); //CAN THIS BE REMOVED (feel like title should be optional)
-    // } else {
+    if (cardTitle.value == '') {
+        alert('Please add a title for your task list and enter.'); //CAN THIS BE REMOVED (feel like title should be optional)
+    } else {
         
         index++;
         
@@ -57,7 +57,7 @@ function createCard() {
         
         cardContainer.appendChild(domFragment);
         
-    // }
+    }
     
     // //Test 4
     // test("This should be empty ready for the new user input", t => {
