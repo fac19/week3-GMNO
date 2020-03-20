@@ -152,7 +152,7 @@ function addTask(e) {
         
         newListItem.appendChild(labelForCheckbox);
         
-        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
+        this.parentNode.previousElementSibling.appendChild(newListItem);
     }
     
     this.previousElementSibling.value = '';
