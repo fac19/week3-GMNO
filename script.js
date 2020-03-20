@@ -34,18 +34,42 @@ function createCard() {
         // test("The index should equal the number of cards", t => {
         //     t.equal(index,1);
         // })
+<<<<<<< Updated upstream
 
+||||||| merged common ancestors
+        
+=======
+        
+        domFragment.querySelector(".card__user-input").className = `card__user-input-${index}`;
+
+>>>>>>> Stashed changes
         domFragment.querySelector(".card__add-list-item-button").className = `card__add-list-item-button${index}`;
 
         domFragment.querySelector(".card_remove-button").addEventListener('click', function () {
             this.parentNode.remove();
             index--; 
+<<<<<<< Updated upstream
 
             // //Test #3
             // test("When the card is removed does in the index = the amount of cards", t => {
             //     t.equal(index, 2);
             // });
 
+||||||| merged common ancestors
+            
+            // //Test #3
+            // test("When the card is removed does in the index = the amount of cards", t => {
+            //     t.equal(index, 2);
+            // });
+            
+=======
+            
+        // //Test #3
+        // test("When the card is removed does in the index = the amount of cards", t => {
+        //     t.equal(index, 2);
+        // });
+            
+>>>>>>> Stashed changes
         });
 
         domFragment.querySelector(`.card__add-list-item-button${index}`).addEventListener('click', addTask);
@@ -64,9 +88,6 @@ function createCard() {
 
 addCardButton.addEventListener('click', () => {
     createCard();
-    //Test (not working):
-    // console.log(document.getElementsByClassName(`class-${index}`));
-    // console.log(index);
 });
 
 
@@ -85,7 +106,15 @@ function addTask(e) {
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
+<<<<<<< Updated upstream
         checkbox.className = "checkbox";
+||||||| merged common ancestors
+        checkbox.className = "checkbox";
+
+=======
+        checkbox.className = `checkbox-${listIndex}`;
+
+>>>>>>> Stashed changes
         checkbox.setAttribute('name', 'contents');
 
         checkbox.addEventListener("keypress", function(e){
@@ -96,20 +125,70 @@ function addTask(e) {
 
         // add label for checkbox.
         const labelForCheckbox = document.createElement('label');
-        labelForCheckbox.className = 'collection-item';
+        labelForCheckbox.className = `collection-item${listIndex}`;
+        labelForCheckbox.classList.add("collection-item--flex");
         labelForCheckbox.setAttribute('for', 'connect' + index);
 
         // Append checkbox to label
         labelForCheckbox.appendChild(checkbox);
+<<<<<<< Updated upstream
         // Create the text node and append to it
         labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
 
+||||||| merged common ancestors
+        // Create the text node and append to it
+        labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
+        
+        // Create remove list button with a class button
+        const removeListItemButton = document.createElement("button");
+        removeListItemButton.className = `button-${index}`;
+        removeListItemButton.textContent = "x";
+        labelForCheckbox.appendChild(removeListItemButton);
+        removeListItemButton.addEventListener("click", () => {
+
+            newListItem.parentNode.removeChild(newListItem);
+            listIndex --;
+
+        })
+        
+        
+=======
+
+        // Create the text and append to it
+        const textForItem = document.createElement("P");
+        textForItem.innerHTML = this.previousElementSibling.value;
+        textForItem.classList.add(`list-item-${listIndex}`);
+        labelForCheckbox.appendChild(textForItem);
+        
+        // Create remove list button with a class button
+        const removeListItemButton = document.createElement("button");
+        removeListItemButton.className = `button-${index}`;
+        removeListItemButton.textContent = "x";
+        labelForCheckbox.appendChild(removeListItemButton);
+        removeListItemButton.addEventListener("click", () => {
+
+            newListItem.parentNode.removeChild(newListItem);
+            listIndex --;
+
+        })
+        
+        
+>>>>>>> Stashed changes
         newListItem.appendChild(labelForCheckbox);
+<<<<<<< Updated upstream
 
         //add event listener so that when the 
 
         this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem)
 
+||||||| merged common ancestors
+                
+        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
+=======
+
+                
+        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
+>>>>>>> Stashed changes
     }
 
     // Once user press the 'add' button, task input box should be empty for next task. 

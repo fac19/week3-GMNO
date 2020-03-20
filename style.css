@@ -19,4 +19,24 @@
 .card__list-add-button {
     border-radius: 50%;
     background-color: green;
+<<<<<<< Updated upstream
+||||||| merged common ancestors
+}
+
+.checkbox-checked{
+    background-color: blue;
+=======
+}
+
+.checkbox-checked{
+    background-color: blue;
+}
+
+p{
+    margin:0;
+}
+
+.collection-item--flex{
+    display: flex;
+>>>>>>> Stashed changes
 }
