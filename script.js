@@ -17,7 +17,7 @@ let listIndex = 0;
 function createCard() {
     
     if (cardTitle.value == '') {
-        alert('Please add a title for your task list and enter.');
+        alert('Please add a title for your task list and enter.'); //CAN THIS BE REMOVED (feel like title should be optional)
     } else {
         
         index++;
@@ -132,7 +132,7 @@ function addTask(e) {
         
         newListItem.appendChild(labelForCheckbox);
                 
-        this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
+        this.parentNode.previousElementSibling.appendChild(newListItem);
     }
     
     this.previousElementSibling.value = '';
