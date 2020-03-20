@@ -20,23 +20,15 @@ function addListItem(lists){
 
 function checkListValues (inputString, test){
     addCard(["monday"]);
-    test.equal(document.querySelector(".card__title").innerHTML,"monday");
+    test.equal(document.querySelector(".card__title").innerHTML, "monday");
     addListItem([inputString]);
-    test.equal(document.querySelector(".list-item-1").innerHTML,"walk the cat");
+    test.equal(document.querySelector(".list-item-1").innerHTML, "walk the cat");
 }
 
 // test 2. delete Items off the list 
-
 function removeListItem(){
     let allItems= document.getElementsByClassName(`card__user-input-${i+1}`);  //returns a HTML collection
-
 }
-
-
-
-
-
-
 
 
 
@@ -46,7 +38,6 @@ document.onkeydown = function(event) {
         case 37: // if event keyCode == left key then call previousImage function
         break;
         case 39: // if event keyCode == right key then call nextImage function
-        addCard(["monday"]);
         test("Check cards are created and list items are added", t =>{
             checkListValues("walk the cat",t);
         });
