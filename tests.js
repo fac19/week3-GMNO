@@ -25,22 +25,32 @@ function checkListValues (inputString, test){
     test.equal(document.querySelector(".list-item-1").innerHTML, "walk the cat");
 }
 
-// test 2. delete Items off the list 
-function removeListItem(){
-    let allItems= document.getElementsByClassName(`card__user-input-${i+1}`);  //returns a HTML collection
-}
 
-
+// "Deleting an entry removes it from the list"
 
 
 document.onkeydown = function(event) {  
     switch (event.keyCode) {
-        case 37: // if event keyCode == left key then call previousImage function
+        case 37:
+        // test 2. check to see if items are checked off the list
+        test("Checking an entry marks it as complete", t =>{
+            let checkbox = document.getElementsByClassName(`checkbox-${1}`);
+            checkbox[0].checked = true;
+            t.equal(document.querySelector(".checkbox-1").checked, true);
+        });
         break;
-        case 39: // if event keyCode == right key then call nextImage function
-        test("Check cards are created and list items are added", t =>{
+        case 39: 
+        test("Submitting a new task adds it to the list", t =>{
             checkListValues("walk the cat",t);
         });
         break;
+        case 38: 
+        test("Deleting an entry removes it from the list", t => {
+            let removeButton = document.getElementsByClassName("button-1");
+            // removeButton[0].click();
+            let list = document.getElementsByClassName("each_task");
+            console.log(list);
+            // t.equal(document.)
+        });
         }
 }
