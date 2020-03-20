@@ -1,28 +1,110 @@
+:root {
+    --clr-orange:#FEAD5E;
+    --background: #f2f2f0;
+}
+
+body {
+    font-family: "Karla";
+    margin: 0 4% 15% 4%;
+    padding: 0;
+    background: var(--background);
+}
+
+header {
+    padding-top: 7%;
+}
+
+header h2 {
+    margin-top: 2%;
+    font-size: 1.8rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+}
+
+#date {
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    color: var(--clr-orange);
+    font-weight: 700;
+}
+
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     grid-gap: 1.5rem;
 }
 
-.card {
-    background-color: aquamarine;
+.add-card__text {
+    border: none;
+    background-color: var(--background);
+    border-bottom: 2px solid var(--clr-orange);
+    width: 50%;
+    padding-bottom: 1%;
+    margin-bottom: 5%;
 }
 
-.add-card{
-    border: 1px solid black; 
+.add-card__text::placeholder {
+    font-size: 1rem;
+    transition: opacity 250ms ease-in;
+    height: 2rem;
+    padding: 10% 0;
 }
 
-.card__list-remove-button {
-    border-radius: 50%;
-    background-color: red;
+.card__user-input::placeholder {
+    transition: opacity 250ms ease-in;
 }
-.card__list-add-button {
+.add-card__text:focus::placeholder, .card__user-input:focus::placeholder {
+    opacity: 0;
+}
+
+.add-card__button {
+    border: none;
+    background-color: var(--clr-orange);
+    color: white;
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1.5rem;
     border-radius: 50%;
-    background-color: green;
+    
+}
+
+.add-card__button:hover, #addListBtn:hover{
+    transform: scale(1.05);
+    animation: popBtn 0.4s linear 1;
+    cursor: pointer;
 }
 
 .checkbox-checked{
-    background-color: blue;
+    text-decoration: line-through;
+}
+
+@keyframes popBtn{
+    50%  {transform: scale(1.2)};
+}
+
+.card__user-input {
+    border: none;
+    background-color: var(--background);
+    border-bottom: 1px solid grey;
+    padding-bottom: 0.2rem;
+}
+
+#addListBtn {
+    border: none;
+    background-color: var(--clr-orange);
+    color: white;
+    font-weight: bolder;
+    border-radius: 50%;
+    background-color: green;
 }
 
 p{
@@ -31,4 +113,31 @@ p{
 
 .collection-item--flex{
     display: flex;
+    width: 100%;
+    height: 1.5rem;
+}
+
+.fa-trash-alt {
+    font-size: 1rem;
+}
+.fa-times {
+    font-size: 0.7rem;
+}
+
+.fa-times:hover, .fa-trash-alt:hover {
+    color: var(--clr-orange);
+    scale: 2rem;
+    cursor: pointer;
+}
+
+.collection-item button, .card-container article button {
+    background-color: transparent;
+    border: none;
+}
+
+
+@media (max-width: 414px) {
+    .add-card__text {
+        width: 80%;
+    }
 }
