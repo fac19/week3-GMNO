@@ -9,9 +9,8 @@ const listForm = document.querySelector(".card__list-form");
 const listItem = document.querySelector(".card__list-item");
 const cardList = document.querySelector(".card__list");
 let index = 0;
-
 let listIndex = 0;
-
+let old;
 
 
 function createCard() {
@@ -72,6 +71,14 @@ addCardButton.addEventListener('click', () => {
 });
 
 
+// For using checkbox - replace anything that's not a number with nothing
+function checkID(str){
+    let res;
+    res = str.replace(/[^0-9]/g,"");
+    return res;
+}
+
+
 function addTask(e) {
     
     if (this.previousElementSibling.value == '') {
@@ -80,16 +87,24 @@ function addTask(e) {
         
     } else {
         listIndex ++;
+
+
         // add a list item
         const newListItem = document.createElement('li');
         newListItem.className = 'each-task';
-        
+         
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.className = "checkbox";
-
+        checkbox.id = "connect" + index;
+        
         checkbox.setAttribute('name', 'contents');
+        
+    
+        // let v = checkID(checkbox.id);
+        // old[v]=true;
+        // checkedIndex(old);
 
         //if the check box is selected add the checked class and move it to the bottom of the list
         checkbox.addEventListener('change', function() {
@@ -117,13 +132,14 @@ function addTask(e) {
         // Create the text node and append to it
         labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
         
+
         // Create remove list button with a class button
         const removeListItemButton = document.createElement("button");
         removeListItemButton.className = `button-${index}`;
-        removeListItemButton.textContent = "x";
+        removeListItemButton.innerHTML = '<i class="fas fa-times"></i>';
         labelForCheckbox.appendChild(removeListItemButton);
         removeListItemButton.addEventListener("click", () => {
-
+            
             newListItem.parentNode.removeChild(newListItem);
             listIndex --;
 
@@ -131,7 +147,7 @@ function addTask(e) {
         
         
         newListItem.appendChild(labelForCheckbox);
-                
+        
         this.parentNode.previousElementSibling.childNodes[1].appendChild(newListItem);
     }
     
@@ -140,3 +156,28 @@ function addTask(e) {
     e.preventDefault();
     
 }
+
+
+
+// For checkbox
+function checkedIndex(old){
+    for(let i=0; i<old.length; i++){
+        if(old[index]){
+            index++;
+        }else{
+            index=i;
+        }
+    }
+}
+
+// let v = checkID(checkbox.id);
+// old[v]=true;
+// checkedIndex(old);
+
+
+
+// Show Date
+const date = document.querySelector('#date');
+let options = { weekday:'long', month:'short', day:'numeric'};
+let today = new Date();
+date.textContent = today.toLocaleDateString("en-GB", options);
