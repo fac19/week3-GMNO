@@ -36,16 +36,18 @@ function createCard() {
         //     t.equal(index,1);
         // })
         
+        domFragment.querySelector(".card__user-input").className = `card__user-input-${index}`;
+
         domFragment.querySelector(".card__add-list-item-button").className = `card__add-list-item-button${index}`;
         
         domFragment.querySelector(".card_remove-button").addEventListener('click', function () {
             this.parentNode.remove();
             index--; 
             
-            // //Test #3
-            // test("When the card is removed does in the index = the amount of cards", t => {
-            //     t.equal(index, 2);
-            // });
+        // //Test #3
+        // test("When the card is removed does in the index = the amount of cards", t => {
+        //     t.equal(index, 2);
+        // });
             
         });
         
@@ -65,9 +67,6 @@ function createCard() {
 
 addCardButton.addEventListener('click', () => {
     createCard();
-    //Test (not working):
-    // console.log(document.getElementsByClassName(`class-${index}`));
-    // console.log(index);
 });
 
 
@@ -96,9 +95,9 @@ function addTask(e) {
         // also add a checkbox.
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.className = "checkbox";
+        checkbox.className = `checkbox-${listIndex}`;
         checkbox.id = "connect" + index;
-        
+
         checkbox.setAttribute('name', 'contents');
         
     
@@ -124,22 +123,27 @@ function addTask(e) {
         
         // add label for checkbox.
         const labelForCheckbox = document.createElement('label');
-        labelForCheckbox.className = 'collection-item';
+        labelForCheckbox.className = `collection-item${listIndex}`;
+        labelForCheckbox.classList.add("collection-item--flex");
         labelForCheckbox.setAttribute('for', 'connect' + index);
         
         // Append checkbox to label
         labelForCheckbox.appendChild(checkbox);
-        // Create the text node and append to it
-        labelForCheckbox.appendChild(document.createTextNode(this.previousElementSibling.value));
-        
 
+        // Create the text and append to it
+        const textForItem = document.createElement("P");
+        textForItem.innerHTML = this.previousElementSibling.value;
+        textForItem.classList.add(`list-item-${listIndex}`);
+        textForItem.classList.add("each-tast__text");
+        labelForCheckbox.appendChild(textForItem);
+        
         // Create remove list button with a class button
         const removeListItemButton = document.createElement("button");
         removeListItemButton.className = `button-${index}`;
-        removeListItemButton.innerHTML = '<i class="fas fa-times"></i>';
+        removeListItemButton.textContent = "x";
         labelForCheckbox.appendChild(removeListItemButton);
         removeListItemButton.addEventListener("click", () => {
-            
+
             newListItem.parentNode.removeChild(newListItem);
             listIndex --;
 
@@ -156,9 +160,7 @@ function addTask(e) {
     e.preventDefault();
     
 }
-
-
-
+                
 // For checkbox
 function checkedIndex(old){
     for(let i=0; i<old.length; i++){
@@ -173,8 +175,6 @@ function checkedIndex(old){
 // let v = checkID(checkbox.id);
 // old[v]=true;
 // checkedIndex(old);
-
-
 
 // Show Date
 const date = document.querySelector('#date');
