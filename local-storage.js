@@ -12,7 +12,6 @@ if(localStorage){
     localStorage.clear(); 
 
     function storeCard(title, callStoreCardFunctions) {
-        //title="hello";
         cardObj = {   //need to get this info from the card
             "cardTitle": title, //change to actual card title
             "cardDescription": "monday shopping", //cahnge to actual card description
@@ -37,30 +36,27 @@ if(localStorage){
         let cardInfo = "card" + index + "Info";
         let cardTasks = "card" + index + "Tasks"; 
         localStorage.setItem(cardInfo, JSON.stringify(cardObj));
-      //  localStorage.setItem(cardTasks, JSON.stringify(listItemObj));
+        //localStorage.setItem(cardTasks, JSON.stringify(listItemObj));
 
         //for testing (gets storage items)
         // console.log(localStorage.getItem(cardTasks));
 
-        test("add card title to the local storage card Obj", t => {
+        test("add card title `asdf` to the local storage card Obj", t => {
             actual = JSON.parse(localStorage.getItem(cardInfo)).cardTitle;
-            expected = "asdf"; 
+            expected = "asdf"; //use this to try to add a card called "asdf" in the browser
             t.equal(actual, expected);
         });
 
-        test("add card title to the local storage card Obj", t => {
-            actual = JSON.parse(localStorage.getItem(cardInfo)).cardDescription;
-            expected = "monday shopping"; 
-            t.equal(actual, expected);
-        });
+        // test("add card title to the local storage card Obj", t => {
+        //     actual = JSON.parse(localStorage.getItem(cardInfo)).cardDescription;
+        //     expected = "monday shopping"; 
+        //     t.equal(actual, expected);
+        // });
 
     }//call this function inside createCard function script.js.
     
     //storeCard(s => s.storeListItems()); //for testing
     //storeCard(); //for testing
-
-
-   
 
     function removeStoredCard() {
         //this function should remove storage data for a card if the user deletes the card

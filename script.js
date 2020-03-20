@@ -23,6 +23,7 @@ function createCard() {
 
         const fragCardTitle = domFragment.querySelector(".card__title"); 
         fragCardTitle.textContent = cardTitle.value;
+        fragCardTitle.classList.add(`card_title${index}`);
         
         // //Test #1
         // test("Does the card title equal the user input text?", t => {
@@ -59,22 +60,14 @@ function createCard() {
     // test("This should be empty ready for the new user input", t => {
     //     t.equal(cardTitle.value , "");   
     // });
-    
-    // addCardButton.addEventListener('click', () => {
-    //     storeCard(fragCardTitle.value);
-    // });
-    // cardTitle.value = '';
 }
-addCardButton.addEventListener('click', () => {
-    storeCard("hi");
-});
-
 
 addCardButton.addEventListener('click', () => {
     createCard();
-    //Test (not working):
-    // console.log(document.getElementsByClassName(`class-${index}`));
-    // console.log(index);
+    let onCardTitle = document.querySelector(`.card_title${index}`);
+    let cardTitleStr = onCardTitle.textContent;
+    storeCard(cardTitleStr);
+    cardTitle.value = ""; //cardTitle is defined globally
 });
 
 function addTask(e) {
