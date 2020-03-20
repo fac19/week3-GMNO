@@ -5,20 +5,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&amp;display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/81e6d1b2b6.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="style.css" />
   <title>To-Do List</title>
 </head>
 
 <body class="main">
-  <header class="header"></header>
+  <header class="header">
+    <div id="date"></div>
+    <h2>Let's get things done.</h2>
+  </header>
   <section class="add-card">
-    <h2>Create your new To-Do List</h2>
-    <input class="add-card__text" type=text placeholder="Enter a Title for your List" required>
+    <input class="add-card__text" type=text placeholder="Enter a title for your list here" required>
     <button class="add-card__button" type="button" aria-label="button to add card">+</button>
     </sections>
 
     <section class="card-container"></section>
-
     <template id="todo-card">
       <article class="card">
         <h3 class="card__title"> Shopping List </h3>
@@ -29,14 +32,17 @@
         <section>
           <label for="userToDo"></label>
           <input class="card__user-input" type="text" placeholder="Enter your list item" id="userToDo"></input>
-          <button class="card__add-list-item-button" type="button" aria-label="button to add to do item" id="addListBtn">+</button>
+          <button class="card__add-list-item-button" type="button" aria-label="button to add to do item">+</button>
         </section>
       </article>
     </template>
 
     <script src="script.js"></script>
     <script src="removeItemsTest.js"></script>
+    <script src="test-helpers.js"></script>  
     <script src="local-storage.js"></script>
+    <script src="tests.js"></script>
+
 </body>
 
 </html>
